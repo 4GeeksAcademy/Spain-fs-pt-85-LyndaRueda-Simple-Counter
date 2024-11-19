@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SecondsCounter from "./SecondsCounter";
 
-const Home = () => {
+function Home() {
   const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {
@@ -12,21 +12,23 @@ const Home = () => {
     return () => clearInterval(interval);
   }, []);
 
+  function getPageStyle() {
+    return {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+      alignItems: "stretch",
+      height: "100vh",
+      width: "100vw",
+      backgroundColor: "#fff;",
+    };
+  }
+
   return (
-    <div style={styles.page}>
+    <div style={getPageStyle()}>
       <SecondsCounter seconds={seconds} />
     </div>
   );
-};
-
-const styles = {
-  page: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    height: "100vh",
-    backgroundColor: "#000",
-  },
-};
+}
 
 export default Home;
